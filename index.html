@@ -10,13 +10,13 @@
 :root{
   --bg:#fff;--bg2:#F8F7F4;--bg3:#F2F0EC;--border:#E8E5DF;--border2:#D0CCC4;
   --text:#1A1A1A;--text2:#6B6760;--text3:#A09C94;
-  --s1:#534AB7;--s1l:#EDE8FD;--s1m:rgba(83,74,183,.10);
-  --s2:#0F6E56;--s2l:#E0F5EE;--s2m:rgba(15,110,86,.10);
-  --s3:#854F0B;--s3l:#FEF3E2;--s3m:rgba(133,79,11,.10);
-  --s4:#185FA5;--s4l:#E3EFF9;--s4m:rgba(24,95,165,.10);
-  --s5:#993C1D;--s5l:#FCEDE8;--s5m:rgba(153,60,29,.10);
+  --s1:#534AB7;--s1m:rgba(83,74,183,.10);
+  --s2:#0F6E56;--s2m:rgba(15,110,86,.10);
+  --s3:#854F0B;--s3m:rgba(133,79,11,.10);
+  --s4:#185FA5;--s4m:rgba(24,95,165,.10);
+  --s5:#993C1D;--s5m:rgba(153,60,29,.10);
   --tr:#3D3D3A;--trm:rgba(61,61,58,.08);
-  --vj:#B07820;--vjm:rgba(176,120,32,.10);--vjl:#FEF8E8;
+  --vj:#B07820;--vjm:rgba(176,120,32,.10);
   --gold:#C8956A;
   --ph1:rgba(83,74,183,.04);--ph2:rgba(15,110,86,.04);--ph3:rgba(133,79,11,.04);
   --lw:218px;
@@ -24,7 +24,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 
-/* ── HERO ── */
 .hero{padding:44px 52px 32px;background:linear-gradient(135deg,rgba(83,74,183,.03) 0%,transparent 50%,rgba(200,149,106,.04) 100%);border-bottom:1px solid var(--border)}
 .hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
 .hero-brand{display:flex;align-items:center;gap:9px}
@@ -44,13 +43,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 .pill:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .pdot{width:6px;height:6px;border-radius:50%}
 
-/* ── NAV ── */
 .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:48px}
-.nav-left{display:flex;align-items:center;gap:10px}
 .nav-title{font-size:12px;font-weight:500;color:var(--text2)}
 .nr{font-size:11px;color:var(--text3)}
 
-/* ── GANTT ── */
 .gantt-wrap{padding:28px 36px 56px;overflow-x:auto}
 .gantt-inner{min-width:900px}
 .phase-strip{display:flex;gap:4px;margin-bottom:9px;padding-left:var(--lw)}
@@ -60,7 +56,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 .gsecs{display:flex;flex-direction:column}
 .gsec-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:16px 0 7px;border-bottom:1px solid var(--border);margin-bottom:4px}
 
-/* Row */
 .grow-wrap{margin-bottom:3px}
 .grow{display:flex;align-items:center;min-height:36px;border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:border-color .15s,box-shadow .15s;cursor:pointer}
 .grow:hover{border-color:var(--border2);box-shadow:0 1px 4px rgba(0,0,0,.06)}
@@ -78,60 +73,35 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 .gb{position:absolute;height:22px;border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:600;color:rgba(255,255,255,.95);white-space:nowrap;overflow:hidden;letter-spacing:.02em}
 .gb.tb{height:18px;border-radius:4px}
 
-/* Milestone diamond with hover tooltip */
-.gms{
-  position:absolute;width:10px;height:10px;
-  transform:rotate(45deg);top:50%;margin-top:-5px;margin-left:-5px;
-  z-index:4;cursor:pointer;pointer-events:all;
-  transition:transform .15s,box-shadow .15s;
-}
-.gms:hover{transform:rotate(45deg) scale(1.5);}
+.gms{position:absolute;width:10px;height:10px;transform:rotate(45deg);top:50%;margin-top:-5px;margin-left:-5px;z-index:4;cursor:pointer;pointer-events:all;transition:transform .15s}
+.gms:hover{transform:rotate(45deg) scale(1.5)}
 
 /* Tooltip */
-.ms-tooltip{
-  position:absolute;z-index:200;
-  background:#1A1A2E;color:#F0EEE8;
-  border-radius:10px;padding:12px 14px;
-  font-size:11px;line-height:1.5;
-  box-shadow:0 8px 24px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.14);
-  pointer-events:none;
-  min-width:220px;max-width:300px;
-  border:1px solid rgba(255,255,255,.08);
-  /* position set via JS */
-}
-.ms-tooltip-title{font-weight:600;font-size:12px;margin-bottom:6px;color:#fff}
-.ms-tooltip-date{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);margin-bottom:8px}
-.ms-tooltip-section{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-top:8px;margin-bottom:4px}
-.ms-tooltip-item{display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,.65);margin-bottom:3px;line-height:1.4}
-.ms-tooltip-arr{flex-shrink:0;padding-top:2px;font-size:9px}
+.ms-tooltip{position:absolute;z-index:200;background:#1A1A2E;color:#F0EEE8;border-radius:10px;padding:12px 14px;font-size:11px;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.22);pointer-events:none;min-width:240px;max-width:320px;border:1px solid rgba(255,255,255,.08)}
+.ms-tt-title{font-weight:600;font-size:12px;margin-bottom:4px;color:#fff}
+.ms-tt-date{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px}
+.ms-tt-sec{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:8px;margin-bottom:4px}
+.ms-tt-item{display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,.65);margin-bottom:3px;line-height:1.4}
+.ms-tt-arr{flex-shrink:0;font-size:9px;padding-top:2px}
 
-/* Expandable detail panel */
-.grow-detail{
-  display:none;
-  border-top:1px solid var(--border);
-  background:var(--bg2);
-  padding:14px 18px 14px 20px;
-  border-radius:0 0 6px 6px;
-  animation:slideDown .18s ease;
-  /* Indent to align with timeline area */
-}
+/* Expandable detail */
+.grow-detail{display:none;border-top:1px solid var(--border);background:var(--bg2);padding:14px 18px 14px 20px;border-radius:0 0 6px 6px;animation:slideDown .18s ease}
 .grow-wrap.open .grow-detail{display:block}
 .grow-wrap.open .grow{border-radius:6px 6px 0 0;border-bottom:none}
 @keyframes slideDown{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
-.detail-col-full{grid-column:1/-1}
-.detail-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:5px}
-.detail-dates{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--text)}
-.ent-list{display:flex;flex-direction:column;gap:3px}
-.ent-item{display:flex;align-items:flex-start;gap:5px;font-size:11px;color:var(--text2);line-height:1.4}
-.earr{flex-shrink:0;padding-top:2px;font-size:9px}
-.part-list{display:flex;flex-direction:column;gap:3px}
-.part-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
+.det-full{grid-column:1/-1}
+.det-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:5px}
+.det-val{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--text)}
+.det-tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:600;margin-top:4px}
+.ent-list{display:flex;flex-direction:column;gap:4px;margin-top:2px}
+.ent-op{display:flex;align-items:flex-start;gap:6px;font-size:11px;color:var(--text);line-height:1.4;padding:5px 8px;background:var(--bg);border-radius:5px;border:1px solid var(--border)}
+.ent-in{display:flex;align-items:flex-start;gap:6px;font-size:11px;color:var(--text3);line-height:1.4;padding:4px 8px}
+.ent-icon{flex-shrink:0;font-size:10px;padding-top:1px}
+.part-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);margin-bottom:3px}
 .part-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--vj)}
-.hito-list{display:flex;flex-direction:column;gap:3px}
-.hito-item{font-size:11px;color:var(--text2)}
+.hito-item{font-size:11px;color:var(--text2);margin-bottom:3px}
 
-/* Legend */
 .gantt-legend{display:flex;align-items:center;gap:16px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap}
 .li{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--text3)}
 .lb{width:20px;height:8px;border-radius:3px}
@@ -144,7 +114,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-top">
     <div class="hero-brand">
@@ -164,24 +133,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
     <div><div class="sv">3 <span>fases</span></div><div class="sl">Del proyecto</div></div>
     <div><div class="sv">44 <span>tareas</span></div><div class="sl">Calendarizadas</div></div>
     <div><div class="sv">10 <span>viajes</span></div><div class="sl">ESP ↔ MEX</div></div>
-    <div><div class="sv">66 <span>entregables</span></div><div class="sl">Documentados</div></div>
+    <div><div class="sv">19 <span>entregables</span></div><div class="sl">A cliente</div></div>
   </div>
 </div>
 
-<!-- NAV -->
 <div class="nav">
-  <div class="nav-left">
-    <div class="nav-title">Plan de desarrollo · CTS Compostela</div>
-  </div>
+  <div class="nav-title">Plan de desarrollo · CTS Compostela</div>
   <div class="nr">Jul 2026 — Sep 2027 · 15 meses</div>
 </div>
 
-<!-- GANTT -->
 <div class="gantt-wrap">
   <div class="gantt-inner" id="gantt-root"></div>
 </div>
 
-<!-- TOOLTIP (singleton) -->
 <div class="ms-tooltip" id="ms-tooltip" style="display:none"></div>
 
 <script>
@@ -197,104 +161,117 @@ const CM={
   S5: {l:'S5 · Oficina Técnica Turística',    c:'var(--s5)',m:'var(--s5m)'},
 };
 
+// Entregables: op = operativo cliente, in = instrumental interno
+const ENT_OP = '📄'; // operativo
+const ENT_IN = '⚙';  // instrumental
+
 const VIAJES=[
-  {id:"V1", n:"Arranque — prospección y campo S3",    m:1,  p:["Kevin Salvador (15 días)","Claudia Chávez (7 días)"],           h:["Arranque oficial del proyecto","Sesión de arranque S2","Inicio análisis territorial S3","Inicio análisis institucional S5"]},
-  {id:"V2", n:"Validación posicionamiento S2",         m:4,  p:["Kevin Salvador","Mavi Franco","Tono Franco"],                    h:["Validación análisis competitivo S2","Presentación perfiles de demanda","Avance modelo gobernanza S1"]},
-  {id:"V3", n:"Avance S3/S1 + Claudia",               m:5,  p:["Kevin Salvador","Tono Franco","Claudia Chávez"],                  h:["Revisión marco conceptual S1","Validación marco portfolio S3","Presentación fichas iniciales S3"]},
-  {id:"V4", n:"DTI/OTT — diagnósticos",               m:6,  p:["Kevin Salvador","Daniel Da Silva"],                              h:["Entrega diagnóstico DTI","Presentación modelo funcional OTT","Revisión estructura organizativa S5"]},
-  {id:"V5", n:"Hitos S2/S3 + Claudia",                m:7,  p:["Kevin Salvador","Mavi Franco","Tono Franco","Claudia Chávez"],    h:["Entrega arquitectura temática S2","Avance fichas proyectos S3","Revisión modelo transformación CIP→CTS"]},
-  {id:"V6", n:"Marca CTS — FutureBrand",              m:8,  p:["Kevin Salvador","Mavi Franco"],                                   h:["Presentación briefing FutureBrand","Inicio proceso naming","Entrega diseño experiencias S2"]},
-  {id:"V7", n:"Entrega S3 y revisión S1",             m:9,  p:["Kevin Salvador","Tono Franco","Claudia Chávez"],                  h:["Entrega proyectos ancla S3","Validación aplicación CTS Compostela S1","Avance sistema coordinación OTT"]},
-  {id:"V8", n:"Entrega DTI + OTT fase 2",             m:11, p:["Kevin Salvador","Daniel Da Silva","Tono Franco"],                 h:["Entrega hoja de ruta DTI","Avance plan estratégico OTT","Revisión hoja de ruta sistema CTS"]},
-  {id:"V9", n:"Revisión general y ajustes finales",   m:13, p:["Kevin Salvador","Especialista vertical"],                         h:["Entrega documento maestro DTI","Entrega deck presentación FONATUR S3","Revisión consolidada todos los servicios"]},
-  {id:"V10",n:"Presentación final y cierre",          m:15, p:["Kevin Salvador","Tono Franco","Claudia Chávez","Especialista vertical"], h:["Entrega final S1 — sistema seguimiento","Entrega modelo replicable OTT","Presentación integral FONATUR — cierre"]},
+  {id:"V1", n:"Arranque — prospección y campo S3",    m:1,  p:["Kevin Salvador (15 días)","Claudia Chávez (7 días)"],                           h:["Arranque oficial del proyecto","Sesión de arranque S2","Inicio análisis territorial S3","Inicio análisis institucional S5"]},
+  {id:"V2", n:"Validación posicionamiento S2",         m:4,  p:["Kevin Salvador","Mavi Franco","Tono Franco"],                                    h:["Validación análisis competitivo S2","Presentación perfiles de demanda","Avance modelo gobernanza S1"]},
+  {id:"V3", n:"Avance S3/S1 + Claudia",               m:5,  p:["Kevin Salvador","Tono Franco","Claudia Chávez"],                                  h:["Revisión marco conceptual S1","Validación marco portfolio S3","Presentación fichas iniciales S3"]},
+  {id:"V4", n:"DTI/OTT — diagnósticos",               m:6,  p:["Kevin Salvador","Daniel Da Silva"],                                              h:["Entrega diagnóstico DTI","Presentación modelo funcional OTT","Revisión estructura organizativa S5"]},
+  {id:"V5", n:"Hitos S2/S3 + Claudia",                m:7,  p:["Kevin Salvador","Mavi Franco","Tono Franco","Claudia Chávez"],                    h:["Entrega arquitectura temática S2","Avance fichas proyectos S3","Revisión modelo transformación CIP→CTS"]},
+  {id:"V6", n:"Marca CTS — FutureBrand",              m:8,  p:["Kevin Salvador","Mavi Franco"],                                                   h:["Presentación briefing FutureBrand","Inicio proceso naming","Entrega diseño experiencias S2"]},
+  {id:"V7", n:"Entrega S3 y revisión S1",             m:9,  p:["Kevin Salvador","Tono Franco","Claudia Chávez"],                                  h:["Entrega proyectos ancla S3","Validación aplicación CTS Compostela S1","Avance sistema coordinación OTT"]},
+  {id:"V8", n:"Entrega DTI + OTT fase 2",             m:11, p:["Kevin Salvador","Daniel Da Silva","Tono Franco"],                                 h:["Entrega hoja de ruta DTI","Avance plan estratégico OTT","Revisión hoja de ruta sistema CTS"]},
+  {id:"V9", n:"Revisión general y ajustes finales",   m:13, p:["Kevin Salvador","Especialista vertical"],                                         h:["Entrega documento maestro DTI","Entrega deck presentación S3","Revisión consolidada todos los servicios"]},
+  {id:"V10",n:"Presentación final y cierre",          m:15, p:["Kevin Salvador","Tono Franco","Claudia Chávez","Especialista vertical"],           h:["Entrega final S1 — sistema seguimiento","Entrega modelo replicable OTT","Presentación integral FONATUR — cierre"]},
 ];
 
+// Tareas con entregables diferenciados: op=operativo cliente, in=instrumental
 const T={
   S1:[
-    {id:"S1-1",n:"Visión y principios rectores",ms:1,me:4,e:["Documento de visión y principios rectores","Marco de decisión para el desarrollo de los CTS","Alineación con Plan Nacional de Desarrollo"]},
-    {id:"S1-2",n:"Modelo de gobernanza turística FONATUR",ms:2,me:5,e:["Documento de modelo de gobernanza","Roles por fase del ciclo de vida del CTS","Arquitectura institucional y mecanismos de coordinación"]},
-    {id:"S1-3",n:"Modelo relación sector privado / comunidades",ms:3,me:6,e:["Política de habilitación de inversión privada","Mecanismos de integración comunitaria"]},
-    {id:"S1-4",n:"Modelo transformación CIP → CTS",ms:4,me:7,e:["Análisis, puntos críticos y hoja de ruta del modelo de transformación"]},
-    {id:"S1-5",n:"Aplicación al CTS Compostela (laboratorio)",ms:5,me:9,e:["Documento de aplicación al CTS Compostela","Implicaciones sobre los cinco servicios","Marco de coherencia globaldit-FONATUR"]},
-    {id:"S1-6",n:"Hoja de ruta sistema CTS",ms:8,me:12,e:["Hoja de ruta para el sistema CTS de FONATUR","Priorización y secuencia de implementación"]},
-    {id:"S1-7",n:"Sistema de seguimiento y actualización",ms:11,me:15,e:["Sistema de seguimiento con indicadores de implementación e impacto","Protocolo de actualización periódica"]},
+    {id:"S1-1",n:"Visión, gobernanza y modelos estratégicos",ms:1,me:7,
+      op:["Plan Director de Estrategia Turística del CTS Compostela"],
+      in:["Documento de visión y principios rectores","Documento de modelo de gobernanza turística","Documento de modelo de relación sector privado/comunidades","Documento del Modelo de transformación CIP→CTS"]},
+    {id:"S1-2",n:"Aplicación al CTS Compostela y hoja de ruta",ms:5,me:12,
+      op:["Hoja de ruta para el sistema CTS de FONATUR"],
+      in:["Documento de aplicación de la estrategia al CTS Compostela"]},
+    {id:"S1-3",n:"Sistema de seguimiento y actualización",ms:11,me:15,
+      op:["Sistema de seguimiento y actualización de la estrategia"],
+      in:[]},
   ],
   S2:[
-    {id:"S2-1",n:"Sesión de arranque y recopilación documental",ms:1,me:1,e:[]},
-    {id:"S2-2",n:"Visita de campo — Boca de Chila + Chacala",ms:1,me:2,e:[]},
-    {id:"S2-3",n:"Análisis de posicionamiento competitivo",ms:2,me:4,e:["Documento de análisis competitivo","Mapa de posicionamiento con benchmarking nacional e internacional"]},
-    {id:"S2-4",n:"Caracterización segmentos de demanda (4-6)",ms:3,me:5,e:["Perfiles de cliente, motivaciones, comportamiento y criterios de priorización"]},
-    {id:"S2-5",n:"Definición del posicionamiento estratégico",ms:4,me:6,e:["Marco de posicionamiento estratégico del CTS Compostela","Argumentos temáticos y propuesta de valor"]},
-    {id:"S2-6",n:"Arquitectura temática de la oferta turística",ms:5,me:7,e:["Documento de arquitectura temática","Mapa de familias de producto y estructura por PTS"]},
-    {id:"S2-7",n:"Mapa de recursos y activos turísticos",ms:5,me:7,e:["Inventario sistematizado por tipología, estado de disponibilidad y potencial","Mapa de recursos del CTS Compostela"]},
-    {id:"S2-8",n:"Diseño de experiencias y productos (12-16)",ms:6,me:9,e:["Portfolio ejecutivo de productos turísticos del CTS","Fichas completas por PTS y familia temática"]},
-    {id:"S2-9",n:"Briefing estratégico para FutureBrand",ms:7,me:8,e:["Posicionamiento, segmentos, propuesta de valor y territorio emocional"]},
-    {id:"S2-10",n:"Coordinación proceso naming CTS",ms:8,me:10,e:["Propuesta de naming con justificación estratégica y análisis de disponibilidad"]},
-    {id:"S2-11",n:"Coordinación identidad visual y narrativa",ms:9,me:12,e:["Manual de identidad turística del programa CTS","Sistema visual completo: logotipo, paleta, tipografías, lenguaje gráfico"]},
+    {id:"S2-1",n:"Análisis, campo y diagnóstico de posicionamiento",ms:1,me:5,
+      op:["Marco de posicionamiento estratégico del CTS Compostela"],
+      in:["Documento de análisis de posicionamiento competitivo","Documento de caracterización de segmentos de demanda","Sesión de arranque y visita de campo completadas"]},
+    {id:"S2-2",n:"Diseño del portfolio de producto turístico",ms:5,me:9,
+      op:["Portfolio ejecutivo de productos turísticos del CTS (12-16 productos)"],
+      in:["Documento de arquitectura temática","Inventario sistematizado de recursos y activos turísticos"]},
+    {id:"S2-3",n:"Identidad de marca CTS (con FutureBrand)",ms:7,me:12,
+      op:["Propuesta de naming del programa CTS","Manual de identidad turística del programa CTS"],
+      in:["Briefing estratégico para FutureBrand"]},
   ],
   S3:[
-    {id:"S3-1",n:"Análisis turístico del territorio",ms:1,me:3,e:["Documento de análisis turístico del territorio y necesidades de desarrollo"]},
-    {id:"S3-2",n:"Identificación y clasificación de oportunidades",ms:2,me:4,e:["Clasificación por tipología: infraestructura habilitante, equipamiento, servicios de apoyo y activación comunitaria"]},
-    {id:"S3-3",n:"Marco conceptual y criterios del portfolio",ms:3,me:5,e:["Marco conceptual y criterios de priorización del portfolio","Formato de ficha de proyecto validado con FONATUR"]},
-    {id:"S3-4",n:"Fichas de proyectos estratégicos (15-20)",ms:4,me:8,e:["Portfolio de proyectos turísticos estratégicos del CTS Compostela","Fichas completas por PTS y tipología"]},
-    {id:"S3-5",n:"Proyectos ancla — desarrollo ampliado (3-5)",ms:6,me:9,e:["Perfiles ampliados con referencias, viabilidad, modelos de gestión y perfiles de operadores"]},
-    {id:"S3-6",n:"Priorización y hoja de ruta CP/MP/LP",ms:8,me:10,e:["Documento de priorización del portfolio y hoja de ruta de desarrollo"]},
-    {id:"S3-7",n:"Materiales de comunicación y deck FONATUR",ms:9,me:11,e:["Deck de presentación listo para uso institucional y de interlocución de FONATUR"]},
+    {id:"S3-1",n:"Diagnóstico territorial y oportunidades",ms:1,me:5,
+      op:[],
+      in:["Documento de análisis turístico del territorio","Documento de identificación y clasificación de oportunidades","Marco conceptual y criterios del portfolio"]},
+    {id:"S3-2",n:"Portfolio de proyectos estratégicos (15-20)",ms:4,me:9,
+      op:["Portfolio de proyectos turísticos estratégicos del CTS Compostela (fichas estándar y proyectos ancla ampliados)"],
+      in:[]},
+    {id:"S3-3",n:"Priorización, hoja de ruta y deck FONATUR",ms:8,me:11,
+      op:["Documento de priorización y hoja de ruta de desarrollo (CP/MP/LP)","Deck de presentación institucional para FONATUR"],
+      in:[]},
   ],
   S4:[
-    {id:"S4-1",n:"Diagnóstico madurez DTI — 5 ejes SEGITTUR",ms:1,me:3,e:["Informe de diagnóstico con radar de madurez, fortalezas y brechas","Conclusiones estratégicas para el diseño del modelo"]},
-    {id:"S4-2",n:"Marco conceptual DTI — contexto mexicano",ms:2,me:4,e:["Marco conceptual del modelo DTI adaptado al CTS Compostela y al contexto mexicano"]},
-    {id:"S4-3",n:"Customer Journey del CTS como eje integrador",ms:3,me:5,e:["Mapa del Customer Journey por segmentos de demanda","Fases, puntos de contacto y conexión con los 5 ejes DTI"]},
-    {id:"S4-4",n:"Eje Gobernanza digital del destino",ms:4,me:6,e:["Diseño del eje de Gobernanza digital","Mapa de actores, roles, flujos de información y mecanismos de decisión"]},
-    {id:"S4-5",n:"Eje Innovación y competitividad empresarial",ms:5,me:7,e:["Sistema de detección de tendencias e indicadores de competitividad empresarial"]},
-    {id:"S4-6",n:"Eje Tecnología e inteligencia de datos",ms:5,me:8,e:["Arquitectura tecnológica por capas: captación, integración, análisis, visualización","Cuadros de mando por perfil y catálogo de métricas"]},
-    {id:"S4-7",n:"Eje Sostenibilidad turística inteligente",ms:6,me:8,e:["Sistema de indicadores de sostenibilidad e integración con monitoreo territorial de FONATUR"]},
-    {id:"S4-8",n:"Eje Accesibilidad universal e inclusión",ms:7,me:9,e:["Estándares por tipología de producto","Criterios de inclusión socioeconómica para comunidades locales"]},
-    {id:"S4-9",n:"Hoja de ruta implantación DTI — 3 fases",ms:9,me:11,e:["Tres fases: arranque, activación y madurez, con hitos, responsables y criterios de verificación"]},
-    {id:"S4-10",n:"Modelo escalabilidad DTI sistema CTS",ms:10,me:12,e:["Modelo de escalabilidad y transferencia del modelo DTI para el sistema CTS de FONATUR"]},
-    {id:"S4-11",n:"Documento maestro DTI + síntesis 10p.",ms:11,me:13,e:["Documento maestro del Modelo DTI del CTS Compostela","Síntesis ejecutiva de 10 páginas para presentaciones institucionales de alto nivel"]},
+    {id:"S4-1",n:"Diagnóstico y marco conceptual DTI",ms:1,me:5,
+      op:[],
+      in:["Informe de diagnóstico de madurez DTI — 5 ejes SEGITTUR","Marco conceptual DTI adaptado al contexto mexicano","Mapa del Customer Journey del CTS por segmentos"]},
+    {id:"S4-2",n:"Diseño del modelo DTI por ejes",ms:4,me:9,
+      op:[],
+      in:["Diseño eje Gobernanza digital","Diseño eje Innovación y competitividad","Diseño eje Tecnología e inteligencia de datos","Diseño eje Sostenibilidad turística inteligente","Diseño eje Accesibilidad e inclusión"]},
+    {id:"S4-3",n:"Documento maestro y síntesis ejecutiva DTI",ms:9,me:13,
+      op:["Documento maestro del Modelo DTI del CTS Compostela","Síntesis ejecutiva del Modelo DTI (10 páginas)"],
+      in:[]},
+    {id:"S4-4",n:"Hoja de ruta e implantación DTI",ms:9,me:12,
+      op:["Hoja de ruta de implantación DTI (3 fases: arranque, activación, madurez)"],
+      in:[]},
+    {id:"S4-5",n:"Modelo de escalabilidad y transferencia DTI",ms:10,me:13,
+      op:["Modelo de escalabilidad y transferencia DTI para el sistema CTS de FONATUR"],
+      in:[]},
   ],
   S5:[
-    {id:"S5-1",n:"Análisis institucional FONATUR + mapa actores",ms:1,me:3,e:["Informe de análisis institucional","Mapa de estructura interna de FONATUR, marco normativo y ecosistema de actores"]},
-    {id:"S5-2",n:"Modelo funcional OTT — 5 planos",ms:2,me:4,e:["Documento de modelo funcional de la OTT","5 dominios: producto/experiencia, mercado/inteligencia, marca, relaciones institucionales, coordinación territorial"]},
-    {id:"S5-3",n:"Estructura organizativa + perfiles evolutivos",ms:3,me:6,e:["Organigrama en 3 momentos: arranque, activación, consolidación","Descripción de funciones y perfiles de reclutamiento"]},
-    {id:"S5-4",n:"Manual de procesos y procedimientos",ms:5,me:8,e:["Manual de procesos y procedimientos operativos de la OTT con procesos prioritarios, responsables y criterios de calidad"]},
-    {id:"S5-5",n:"Sistema de coordinación y reporte — 3 niveles",ms:6,me:9,e:["Agenda de coordinación, plantillas de informe y protocolo de coordinación con actores externos"]},
-    {id:"S5-6",n:"Plan estratégico OTT 2 años + 90 días",ms:8,me:11,e:["Objetivos estratégicos, acciones priorizadas e indicadores de progreso","Hoja de ruta de los primeros 90 días"]},
-    {id:"S5-7",n:"Programa de promoción turística — avance inicial",ms:10,me:13,e:["Marco estratégico por 3 públicos: operadores/inversores, visitantes potenciales, medios/prescriptores","Canales prioritarios y mensajes clave por fase"]},
-    {id:"S5-8",n:"Modelo replicable OTT sistema CTS-FONATUR",ms:12,me:15,e:["Elementos invariantes y adaptables","Guía de adaptación por tipología de CTS","Propuesta de red de coordinación entre OTTs"]},
+    {id:"S5-1",n:"Análisis institucional y modelo funcional OTT",ms:1,me:4,
+      op:["Documento de modelo funcional de la OTT (5 dominios)"],
+      in:["Informe de análisis institucional de FONATUR y mapa de actores"]},
+    {id:"S5-2",n:"Estructura organizativa y perfiles de competencias",ms:3,me:6,
+      op:["Documento de estructura organizativa y perfiles de competencias (3 fases evolutivas)"],
+      in:[]},
+    {id:"S5-3",n:"Manual de procesos y sistema de coordinación",ms:5,me:9,
+      op:["Manual de procesos y procedimientos operativos de la OTT"],
+      in:["Documento de sistema de coordinación y reporte (3 niveles)"]},
+    {id:"S5-4",n:"Plan estratégico OTT 2 años + 90 días",ms:8,me:12,
+      op:["Plan estratégico de la OTT para los primeros dos años (+ hoja de ruta 90 días)"],
+      in:["Avance del programa de promoción turística"]},
+    {id:"S5-5",n:"Modelo replicable OTT sistema CTS-FONATUR",ms:12,me:15,
+      op:["Modelo replicable de OTT para el sistema CTS de FONATUR"],
+      in:[]},
   ],
 };
 
-// Hitos enriquecidos con entregables asociados
 const HITOS={
   S1:[
-    {m:4, l:"Marco estratégico v1",  e:["Visión y principios rectores (S1-1)","Modelo de gobernanza turística (S1-2 en curso)"]},
-    {m:9, l:"Validación con FONATUR", e:["Aplicación al CTS Compostela (S1-5)","Modelos sector privado y transformación CIP→CTS completos"]},
-    {m:15,l:"Entrega final S1",       e:["Sistema de seguimiento y actualización (S1-7)","Hoja de ruta sistema CTS consolidada (S1-6)"]},
+    {m:7, l:"Plan Director S1",         op:["Plan Director de Estrategia Turística del CTS Compostela"]},
+    {m:12,l:"Hoja de ruta CTS",          op:["Hoja de ruta para el sistema CTS de FONATUR"]},
+    {m:15,l:"Sistema seguimiento S1",    op:["Sistema de seguimiento y actualización de la estrategia"]},
   ],
   S2:[
-    {m:2, l:"Campo completado",       e:["Sesión de arranque completada (S2-1)","Visita de campo Boca de Chila + Chacala (S2-2)"]},
-    {m:6, l:"Posicionamiento",        e:["Análisis posicionamiento competitivo (S2-3)","Caracterización segmentos de demanda (S2-4)","Posicionamiento estratégico definido (S2-5)"]},
-    {m:9, l:"Portfolio de producto",  e:["Arquitectura temática (S2-6)","Mapa de recursos (S2-7)","Portfolio de experiencias y productos (S2-8)"]},
-    {m:12,l:"Identidad de marca CTS", e:["Naming aprobado (S2-10)","Manual de identidad turística completo (S2-11)"]},
+    {m:6, l:"Posicionamiento estratégico",op:["Marco de posicionamiento estratégico del CTS Compostela"]},
+    {m:9, l:"Portfolio de productos",    op:["Portfolio ejecutivo de productos turísticos (12-16 productos)"]},
+    {m:12,l:"Identidad de marca CTS",    op:["Propuesta de naming del programa CTS","Manual de identidad turística (FutureBrand)"]},
   ],
   S3:[
-    {m:4, l:"Diagnóstico territorial",e:["Análisis turístico del territorio (S3-1)","Identificación y clasificación de oportunidades (S3-2)"]},
-    {m:8, l:"Portfolio de proyectos", e:["Marco conceptual y fichas completadas (S3-3 y S3-4)","Proyectos ancla en desarrollo (S3-5)"]},
-    {m:11,l:"Entrega S3",             e:["Priorización y hoja de ruta CP/MP/LP (S3-6)","Deck de presentación FONATUR (S3-7)"]},
+    {m:9, l:"Portfolio de proyectos",    op:["Portfolio de proyectos estratégicos (15-20 fichas + proyectos ancla)"]},
+    {m:11,l:"Entrega S3",               op:["Documento de priorización y hoja de ruta CP/MP/LP","Deck de presentación institucional FONATUR"]},
   ],
   S4:[
-    {m:3, l:"Diagnóstico DTI",        e:["Informe de madurez DTI — 5 ejes SEGITTUR (S4-1)","Marco conceptual DTI en curso (S4-2)"]},
-    {m:8, l:"Modelo DTI completo",    e:["Customer Journey (S4-3)","Los 5 ejes diseñados: gobernanza, innovación, tecnología, sostenibilidad, accesibilidad (S4-4 a S4-8)"]},
-    {m:13,l:"Entrega S4",             e:["Hoja de ruta de implantación (S4-9)","Modelo de escalabilidad (S4-10)","Documento maestro + síntesis 10p. (S4-11)"]},
+    {m:13,l:"Modelo DTI completo",       op:["Documento maestro DTI","Síntesis ejecutiva 10p.","Hoja de ruta de implantación","Modelo de escalabilidad y transferencia"]},
   ],
   S5:[
-    {m:3, l:"Modelo funcional OTT",   e:["Análisis institucional FONATUR (S5-1)","Modelo funcional OTT — 5 planos (S5-2)"]},
-    {m:8, l:"Organización OTT",       e:["Estructura organizativa y perfiles (S5-3)","Manual de procesos (S5-4)","Sistema de coordinación (S5-5 en curso)"]},
-    {m:12,l:"Plan estratégico OTT",   e:["Plan estratégico 2 años + 90 días (S5-6)","Programa de promoción — avance (S5-7 en curso)"]},
-    {m:15,l:"Entrega final S5",       e:["Modelo replicable OTT para el sistema CTS de FONATUR (S5-8)"]},
+    {m:4, l:"Modelo funcional OTT",      op:["Documento de modelo funcional de la OTT"]},
+    {m:6, l:"Organización OTT",          op:["Documento de estructura organizativa y perfiles"]},
+    {m:11,l:"Operativa OTT",             op:["Manual de procesos y procedimientos","Plan estratégico OTT 2 años + 90 días"]},
+    {m:15,l:"Entrega final S5",          op:["Modelo replicable OTT para el sistema CTS de FONATUR"]},
   ],
 };
 
@@ -302,59 +279,44 @@ const SVCS=['S1','S2','S3','S4','S5'];
 function pct(m){return((m-1)/N*100).toFixed(3)+'%'}
 function wpct(ms,me){return((me-ms+1)/N*100).toFixed(3)+'%'}
 function phc(m){return m<=5?'p1':m<=10?'p2':'p3'}
-
-function mktl(){
-  const tl=document.createElement('div');tl.className='gtl';
-  for(let i=1;i<=N;i++){const c=document.createElement('div');c.className='gtlc '+phc(i);tl.appendChild(c);}
-  return tl;
-}
+function mktl(){const tl=document.createElement('div');tl.className='gtl';for(let i=1;i<=N;i++){const c=document.createElement('div');c.className='gtlc '+phc(i);tl.appendChild(c);}return tl;}
 function mkLayer(){const l=document.createElement('div');l.className='gl';return l;}
+function mkRowWrap(){return Object.assign(document.createElement('div'),{className:'grow-wrap'});}
+function addSecLbl(p,txt){const el=document.createElement('div');el.className='gsec-lbl';el.textContent=txt;p.appendChild(el);}
 function mkLbl(code,name,color,bgm,hasChev){
   const l=document.createElement('div');l.className='glbl';
   l.innerHTML=`<div class="gcod" style="background:${bgm};color:${color}">${code}</div><div class="gname">${name}</div>${hasChev?'<svg class="gchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>':''}`;
   return l;
 }
-function mkRowWrap(){const w=document.createElement('div');w.className='grow-wrap';return w;}
-function addSecLbl(p,txt){const el=document.createElement('div');el.className='gsec-lbl';el.textContent=txt;p.appendChild(el);}
 
 // ── TOOLTIP ──────────────────────────────────────────────────────────────────
 const tooltip=document.getElementById('ms-tooltip');
-let tooltipTimer=null;
-
-function showTooltip(el, hito, svcColor){
-  clearTimeout(tooltipTimer);
-  const entsHTML=hito.e.map(e=>`<div class="ms-tooltip-item"><span class="ms-tooltip-arr" style="color:${svcColor}">↳</span><span>${e}</span></div>`).join('');
-  tooltip.innerHTML=`
-    <div class="ms-tooltip-title" style="color:${svcColor}">${hito.l}</div>
-    <div class="ms-tooltip-date">${MESES[hito.m-1]}</div>
-    <div class="ms-tooltip-section">Entregables asociados</div>
-    ${entsHTML}`;
+let ttTimer=null;
+function showTT(el,hito,color){
+  clearTimeout(ttTimer);
+  const opHTML=hito.op.map(e=>`<div class="ms-tt-item"><span class="ms-tt-arr" style="color:${color}">📄</span><span>${e}</span></div>`).join('');
+  tooltip.innerHTML=`<div class="ms-tt-title" style="color:${color}">${hito.l}</div>
+    <div class="ms-tt-date">${MESES[hito.m-1]}</div>
+    <div class="ms-tt-sec">Entregables a cliente</div>${opHTML}`;
   tooltip.style.display='block';
-  positionTooltip(el);
-}
-function positionTooltip(el){
   const r=el.getBoundingClientRect();
-  const tw=tooltip.offsetWidth||260;
+  const tw=tooltip.offsetWidth||280;
   const th=tooltip.offsetHeight||120;
   let left=r.left+window.scrollX-tw/2+r.width/2;
   let top=r.top+window.scrollY-th-12;
-  if(left<8) left=8;
-  if(left+tw>window.innerWidth-8) left=window.innerWidth-tw-8;
-  if(top<8) top=r.top+window.scrollY+r.height+10;
-  tooltip.style.left=left+'px';
-  tooltip.style.top=top+'px';
+  if(left<8)left=8;
+  if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
+  if(top<window.scrollY+8)top=r.top+window.scrollY+r.height+10;
+  tooltip.style.left=left+'px';tooltip.style.top=top+'px';
 }
-function hideTooltip(){
-  tooltipTimer=setTimeout(()=>{ tooltip.style.display='none'; },120);
-}
-tooltip.addEventListener('mouseenter',()=>clearTimeout(tooltipTimer));
-tooltip.addEventListener('mouseleave',hideTooltip);
+function hideTT(){ttTimer=setTimeout(()=>tooltip.style.display='none',120);}
+tooltip.addEventListener('mouseenter',()=>clearTimeout(ttTimer));
+tooltip.addEventListener('mouseleave',hideTT);
 
 // ── BUILD GANTT ───────────────────────────────────────────────────────────────
 function buildGantt(){
   const root=document.getElementById('gantt-root');
 
-  // Phase strip
   const ps=document.createElement('div');ps.className='phase-strip';ps.style.paddingLeft='var(--lw)';
   [['Fase 1 · Arranque y campo','var(--ph1)','var(--s1)'],
    ['Fase 2 · Producción principal','var(--ph2)','var(--s2)'],
@@ -363,14 +325,13 @@ function buildGantt(){
   });
   root.appendChild(ps);
 
-  // Month strip
   const ms=document.createElement('div');ms.className='mstrip';ms.style.paddingLeft='var(--lw)';
   MESES.forEach(m=>{const el=document.createElement('div');el.className='mc';el.textContent=m;ms.appendChild(el);});
   root.appendChild(ms);
 
   const secs=document.createElement('div');secs.className='gsecs';
 
-  // ── DIRECCIÓN ──
+  // DIR
   addSecLbl(secs,'Dirección del proyecto');
   const dirW=mkRowWrap();
   const dirRow=document.createElement('div');dirRow.className='grow';dirRow.style.cursor='default';
@@ -379,20 +340,18 @@ function buildGantt(){
   const dirBar=document.createElement('div');dirBar.className='gb';
   dirBar.style.cssText=`left:${pct(1)};width:${wpct(1,15)};background:var(--tr);opacity:.2;`;
   dirLayer.appendChild(dirBar);
-  // Travel dots on DIR row
   VIAJES.forEach(v=>{
-    const dot=document.createElement('div');
     const off=(1/N/2*100).toFixed(3);
+    const dot=document.createElement('div');
     dot.style.cssText=`position:absolute;left:calc(${pct(v.m)} + ${off}% - 6px);top:50%;margin-top:-6px;
-      width:12px;height:12px;border-radius:50%;background:var(--vj);
-      display:flex;align-items:center;justify-content:center;font-size:7px;color:white;font-weight:700;
-      cursor:default;z-index:3;box-shadow:0 2px 5px rgba(0,0,0,.15);pointer-events:none;`;
-    dot.textContent='✈';
-    dirLayer.appendChild(dot);
+      width:12px;height:12px;border-radius:50%;background:var(--vj);display:flex;align-items:center;
+      justify-content:center;font-size:7px;color:white;font-weight:700;z-index:3;
+      box-shadow:0 2px 5px rgba(0,0,0,.15);pointer-events:none;`;
+    dot.textContent='✈';dirLayer.appendChild(dot);
   });
   dirTl.appendChild(dirLayer);dirRow.appendChild(dirTl);dirW.appendChild(dirRow);secs.appendChild(dirW);
 
-  // ── VIAJES ──
+  // VIAJES
   addSecLbl(secs,'Viajes y presencialidad ESP ↔ MEX');
   VIAJES.forEach(v=>{
     const w=mkRowWrap();
@@ -401,50 +360,45 @@ function buildGantt(){
     const tl=mktl();const layer=mkLayer();
     const bar=document.createElement('div');bar.className='gb tb';
     bar.style.cssText=`left:calc(${pct(v.m)} + 2px);width:calc(${wpct(v.m,v.m)} - 6px);background:var(--vj);`;
-    bar.textContent=v.id;layer.appendChild(bar);
-    tl.appendChild(layer);row.appendChild(tl);
-    row.onclick=()=>w.classList.toggle('open');
-    w.appendChild(row);
-    // Viaje detail
+    bar.textContent=v.id;layer.appendChild(bar);tl.appendChild(layer);row.appendChild(tl);
+    row.onclick=()=>w.classList.toggle('open');w.appendChild(row);
     const det=document.createElement('div');det.className='grow-detail';
-    det.innerHTML=`<div class="detail-grid">
-      <div><div class="detail-label">Mes</div><div class="detail-dates" style="color:var(--vj)">${MESES[v.m-1]}</div></div>
-      <div><div class="detail-label">Participantes</div><div class="part-list">${v.p.map(p=>`<div class="part-item"><div class="part-dot"></div>${p}</div>`).join('')}</div></div>
-      <div class="detail-col-full"><div class="detail-label">Hitos y entregables asociados al viaje</div><div class="hito-list">${v.h.map(h=>`<div class="hito-item">◆ ${h}</div>`).join('')}</div></div>
+    det.innerHTML=`<div class="det-grid">
+      <div><div class="det-lbl">Mes</div><div class="det-val" style="color:var(--vj)">${MESES[v.m-1]}</div></div>
+      <div><div class="det-lbl">Participantes</div>${v.p.map(p=>`<div class="part-item"><div class="part-dot"></div>${p}</div>`).join('')}</div>
+      <div class="det-full"><div class="det-lbl">Hitos y entregables del período</div>${v.h.map(h=>`<div class="hito-item">◆ ${h}</div>`).join('')}</div>
     </div>`;
     w.appendChild(det);secs.appendChild(w);
   });
 
-  // ── SERVICIOS ──
-  addSecLbl(secs,'Servicios — calendarización detallada de tareas');
+  // SERVICIOS
+  addSecLbl(secs,'Servicios — calendarización detallada · click en tarea para ver entregables');
   SVCS.forEach(svc=>{
     const meta=CM[svc];const ts=T[svc];
     const msMin=Math.min(...ts.map(t=>t.ms));const meMax=Math.max(...ts.map(t=>t.me));
 
-    // Service header row (no expand)
+    // Svc header
     const hw=mkRowWrap();
     const hrow=document.createElement('div');hrow.className='grow srow';hrow.style.cursor='default';
     const hlbl=mkLbl(svc,meta.l,meta.c,meta.m,false);
-    hlbl.querySelector('.gname').style.fontWeight='600';
-    hlbl.querySelector('.gname').style.color=meta.c;
+    hlbl.querySelector('.gname').style.cssText=`font-weight:600;color:${meta.c}`;
     hrow.appendChild(hlbl);
     const htl=mktl();const hl=mkLayer();
     const hb=document.createElement('div');hb.className='gb';
     hb.style.cssText=`left:${pct(msMin)};width:${wpct(msMin,meMax)};background:${meta.c};opacity:.15;`;
     hl.appendChild(hb);
-    // Milestone diamonds with hover tooltips
+    // Milestone diamonds
     if(HITOS[svc]) HITOS[svc].forEach(h=>{
       const off=(1/N/2*100).toFixed(3);
-      const ms=document.createElement('div');ms.className='gms';
-      ms.style.cssText=`background:${meta.c};left:calc(${pct(h.m)} + ${off}%);
-        box-shadow:0 0 6px ${meta.c};pointer-events:all;cursor:pointer;`;
-      ms.addEventListener('mouseenter',()=>showTooltip(ms,h,meta.c));
-      ms.addEventListener('mouseleave',hideTooltip);
-      hl.appendChild(ms);
+      const msel=document.createElement('div');msel.className='gms';
+      msel.style.cssText=`background:${meta.c};left:calc(${pct(h.m)} + ${off}%);box-shadow:0 0 6px ${meta.c};pointer-events:all;`;
+      msel.addEventListener('mouseenter',()=>showTT(msel,h,meta.c));
+      msel.addEventListener('mouseleave',hideTT);
+      hl.appendChild(msel);
     });
     htl.appendChild(hl);hrow.appendChild(htl);hw.appendChild(hrow);secs.appendChild(hw);
 
-    // Task rows with expand
+    // Task rows
     ts.forEach(t=>{
       const w=mkRowWrap();
       const row=document.createElement('div');row.className='grow';
@@ -454,17 +408,34 @@ function buildGantt(){
       bar.style.cssText=`left:${pct(t.ms)};width:${wpct(t.ms,t.me)};background:${meta.c};`;
       bar.textContent=t.n.length>32?t.n.substring(0,30)+'…':t.n;
       layer.appendChild(bar);tl.appendChild(layer);row.appendChild(tl);
-      row.onclick=()=>w.classList.toggle('open');
-      w.appendChild(row);
-      // Task detail
+      row.onclick=()=>w.classList.toggle('open');w.appendChild(row);
+
+      // Detail panel con entregables diferenciados
       const det=document.createElement('div');det.className='grow-detail';
-      const entsHTML=t.e.length
-        ?`<div class="ent-list">${t.e.map(e=>`<div class="ent-item"><span class="earr" style="color:${meta.c}">↳</span><span>${e}</span></div>`).join('')}</div>`
-        :'<span style="font-size:11px;color:var(--text3)">Tarea de arranque o coordinación — sin entregable documental específico</span>';
-      det.innerHTML=`<div class="detail-grid">
-        <div><div class="detail-label">Período</div><div class="detail-dates" style="color:${meta.c}">${MESES[t.ms-1]} → ${MESES[t.me-1]}</div></div>
-        <div><div class="detail-label">Servicio</div><div class="detail-dates">${meta.l}</div></div>
-        <div class="detail-col-full"><div class="detail-label">Entregables</div>${entsHTML}</div>
+      const opHTML=t.op.length
+        ? t.op.map(e=>`<div class="ent-op"><span class="ent-icon">📄</span><span>${e}</span></div>`).join('')
+        : `<div class="ent-in" style="color:var(--text3)"><span class="ent-icon">—</span><span>Sin entregable directo a cliente en esta fase</span></div>`;
+      const inHTML=t.in.length
+        ? t.in.map(e=>`<div class="ent-in"><span class="ent-icon" style="color:var(--text3)">⚙</span><span>${e}</span></div>`).join('')
+        : '';
+
+      det.innerHTML=`<div class="det-grid">
+        <div>
+          <div class="det-lbl">Período</div>
+          <div class="det-val" style="color:${meta.c}">${MESES[t.ms-1]} → ${MESES[t.me-1]}</div>
+        </div>
+        <div>
+          <div class="det-lbl">Servicio</div>
+          <div class="det-val">${meta.l}</div>
+        </div>
+        <div class="det-full">
+          <div class="det-lbl" style="margin-bottom:6px">Entregables a cliente <span style="background:${meta.c}22;color:${meta.c};padding:1px 7px;border-radius:10px;font-size:9px;font-weight:600;margin-left:4px">${t.op.length}</span></div>
+          <div class="ent-list">${opHTML}</div>
+        </div>
+        ${t.in.length?`<div class="det-full" style="margin-top:8px">
+          <div class="det-lbl" style="margin-bottom:4px">Trabajo instrumental interno <span style="background:rgba(0,0,0,.06);color:var(--text3);padding:1px 7px;border-radius:10px;font-size:9px;font-weight:600;margin-left:4px">${t.in.length}</span></div>
+          <div class="ent-list">${inHTML}</div>
+        </div>`:''}
       </div>`;
       w.appendChild(det);secs.appendChild(w);
     });
@@ -475,24 +446,23 @@ function buildGantt(){
   // Legend
   const leg=document.createElement('div');leg.className='gantt-legend';
   leg.innerHTML=`
-    <div class="li"><div class="ld" style="background:var(--s1)"></div>Hito — hover para ver entregables</div>
-    <div class="li"><span style="font-size:12px">✈</span>Viaje ESP↔MEX — click para ver detalle</div>
-    <div class="li"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Tarea — click para ver entregables</div>
+    <div class="li"><div class="ld" style="background:var(--s1)"></div>Hito — hover para ver entregables cliente</div>
+    <div class="li"><span style="font-size:12px">✈</span>Viaje ESP↔MEX — click para detalle</div>
+    <div class="li">📄 Entregable a cliente</div>
+    <div class="li">⚙ Trabajo instrumental interno</div>
     ${SVCS.map(s=>`<div class="li"><div class="lb" style="background:${CM[s].c};opacity:.8"></div>${s}</div>`).join('')}`;
   root.appendChild(leg);
 }
 
-// ── HERO PILLS ────────────────────────────────────────────────────────────────
+// HERO PILLS
 function buildHeroPills(){
   const wrap=document.getElementById('hero-pills');
   SVCS.forEach(svc=>{
     const meta=CM[svc];const el=document.createElement('div');el.className='pill';
     el.style.cssText=`color:${meta.c};border-color:${meta.c}44;background:${meta.m}`;
     el.innerHTML=`<div class="pdot" style="background:${meta.c}"></div>${meta.l}`;
-    // Scroll to service section in Gantt
     el.onclick=()=>{
-      const rows=document.querySelectorAll('.gsec-lbl');
-      rows.forEach(r=>{ if(r.textContent.includes('Servicios')) r.scrollIntoView({behavior:'smooth',block:'start'}); });
+      document.querySelectorAll('.gsec-lbl').forEach(r=>{if(r.textContent.includes('Servicios'))r.scrollIntoView({behavior:'smooth',block:'start'});});
     };
     wrap.appendChild(el);
   });
