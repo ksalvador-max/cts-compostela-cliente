@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTS Compostela · Plan de Desarrollo Turístico Integral</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0D0D12;
+  --bg2:      #13131A;
+  --bg3:      #1A1A24;
+  --surface:  #1E1E2A;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #F0EEE8;
+  --text2:    rgba(240,238,232,0.55);
+  --text3:    rgba(240,238,232,0.28);
+
+  --s1: #6B63CC; --s1b: #3D3780; --s1bg: rgba(107,99,204,0.12);
+  --s2: #2E9E76; --s2b: #1A5E46; --s2bg: rgba(46,158,118,0.12);
+  --s3: #C47C2A; --s3b: #7A4D1A; --s3bg: rgba(196,124,42,0.12);
+  --s4: #3A8FD4; --s4b: #1E5480; --s4bg: rgba(58,143,212,0.12);
+  --s5: #C44A3A; --s5b: #7A2E24; --s5bg: rgba(196,74,58,0.12);
+  --tr: #888880; --trbg: rgba(136,136,128,0.1);
+
+  --gold: #C8956A;
+  --gold2: rgba(200,149,106,0.15);
+  --phase1: rgba(107,99,204,0.18);
+  --phase2: rgba(46,158,118,0.18);
+  --phase3: rgba(196,124,42,0.18);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE ─────────────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ── HERO HEADER ───────────────────────────────────────────────────────────── */
+.hero {
+  position: relative; z-index: 1;
+  padding: 56px 60px 44px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(107,99,204,0.06) 0%, transparent 50%, rgba(196,149,106,0.04) 100%);
+}
+
+.hero-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 36px;
+}
+
+.hero-brand {
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-brand-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold); box-shadow: 0 0 12px var(--gold);
+}
+.hero-brand-text { font-size: 11px; font-weight: 500; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; }
+.hero-brand-sep { color: var(--text3); }
+
+.hero-meta {
+  text-align: right;
+  font-size: 11px; color: var(--text3); letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 700px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: 14px; color: var(--text2); font-weight: 300;
+  max-width: 560px; line-height: 1.6;
+}
+
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 40px;
+  padding-top: 32px; border-top: 1px solid var(--border);
+}
+.stat { }
+.stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 28px; font-weight: 300; color: var(--text);
+  letter-spacing: -0.02em;
+}
+.stat-val span { font-size: 14px; color: var(--text3); font-family: 'DM Sans', sans-serif; }
+.stat-lbl { font-size: 11px; color: var(--text3); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── SERVICE PILLS ─────────────────────────────────────────────────────────── */
+.svc-pills {
+  display: flex; gap: 8px; margin-top: 28px; flex-wrap: wrap;
+}
+.svc-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 20px; border: 1px solid;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+  cursor: pointer; transition: all 0.2s;
+}
+.svc-pill:hover { transform: translateY(-1px); }
+.pill-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+/* ── NAV ───────────────────────────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px;
+  background: rgba(13,13,18,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 52px;
+}
+.nav-views { display: flex; gap: 2px; }
+.nav-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 6px 16px; border-radius: 8px;
+  font-size: 12px; font-weight: 500; color: var(--text2);
+  cursor: pointer; border: none; background: none;
+  transition: all 0.15s; letter-spacing: 0.01em;
+}
+.nav-btn:hover { color: var(--text); background: var(--surface); }
+.nav-btn.active {
+  color: var(--text); background: var(--surface);
+  box-shadow: 0 0 0 1px var(--border2);
+}
+.nav-btn svg { width: 14px; height: 14px; opacity: 0.7; }
+.nav-right { font-size: 11px; color: var(--text3); letter-spacing: 0.04em; }
+
+/* ── MAIN ──────────────────────────────────────────────────────────────────── */
+.main { position: relative; z-index: 1; }
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── GANTT VIEW ────────────────────────────────────────────────────────────── */
+.gantt-wrap { padding: 40px 60px 60px; }
+
+.gantt-header-row {
+  display: flex; gap: 0;
+  margin-bottom: 12px;
+  padding-left: 220px;
+}
+
+.phase-block {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 6px 0; border-radius: 4px; margin: 0 2px;
+}
+
+.gantt-months {
+  display: flex; padding-left: 220px; margin-bottom: 6px; gap: 0;
+}
+.month-label {
+  font-size: 9px; color: var(--text3); text-align: center;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  flex: 1; min-width: 0;
+}
+
+.gantt-body { display: flex; flex-direction: column; gap: 4px; }
+
+.gantt-row {
+  display: flex; align-items: center; gap: 0;
+  height: 48px;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.gantt-row:hover { border-color: var(--border2); }
+
+.gantt-label {
+  width: 220px; flex-shrink: 0;
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 16px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  height: 100%;
+}
+.gantt-label-code {
+  font-size: 10px; font-weight: 600; padding: 2px 7px;
+  border-radius: 4px; letter-spacing: 0.04em; white-space: nowrap;
+}
+.gantt-label-name {
+  font-size: 11px; color: var(--text2); line-height: 1.3;
+  overflow: hidden;
+}
+
+.gantt-timeline {
+  flex: 1; height: 100%; display: flex; position: relative;
+  background: var(--bg2);
+}
+
+.gantt-col {
+  flex: 1; height: 100%; border-right: 1px solid rgba(255,255,255,0.03);
+}
+
+.gantt-bar-wrap {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; padding: 8px 0;
+  pointer-events: none;
+}
+
+.gantt-bar {
+  position: absolute; height: 28px; border-radius: 6px;
+  display: flex; align-items: center; padding: 0 10px;
+  font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.9);
+  letter-spacing: 0.02em; white-space: nowrap; overflow: hidden;
+}
+
+.gantt-milestone {
+  position: absolute; width: 10px; height: 10px;
+  background: var(--gold);
+  transform: rotate(45deg); top: 50%; margin-top: -5px; margin-left: -5px;
+  box-shadow: 0 0 8px var(--gold);
+  z-index: 2;
+}
+
+.gantt-section-title {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--text3);
+  padding: 20px 0 8px; margin-top: 8px;
+}
+
+/* Phase background cols */
+.phase-bg {
+  position: absolute; top: 0; bottom: 0;
+  pointer-events: none; z-index: 0;
+}
+
+/* Hitos legend */
+.gantt-legend {
+  display: flex; align-items: center; gap: 24px;
+  margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text3); }
+.legend-milestone { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 6px var(--gold); }
+.legend-bar { width: 28px; height: 10px; border-radius: 3px; }
+
+/* ── SERVICES VIEW ─────────────────────────────────────────────────────────── */
+.services-wrap { padding: 40px 60px 60px; }
+
+.svc-filter {
+  display: flex; gap: 8px; margin-bottom: 32px;
+}
+.svc-filter-btn {
+  padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border);
+  font-size: 11px; font-weight: 500; color: var(--text2);
+  cursor: pointer; background: none; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.svc-filter-btn:hover { border-color: var(--border2); color: var(--text); }
+.svc-filter-btn.active { color: var(--text); border-color: var(--gold); background: var(--gold2); }
+
+.svc-cards { display: flex; flex-direction: column; gap: 12px; }
+
+.svc-card {
+  border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; transition: border-color 0.2s;
+}
+.svc-card:hover { border-color: var(--border2); }
+
+.svc-card-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+.svc-card-header:hover { background: rgba(255,255,255,0.02); }
+
+.svc-card-code {
+  font-size: 11px; font-weight: 700; padding: 4px 10px;
+  border-radius: 6px; letter-spacing: 0.06em; white-space: nowrap;
+}
+.svc-card-info { flex: 1; }
+.svc-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 400; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.svc-card-sub { font-size: 12px; color: var(--text3); margin-top: 3px; }
+
+.svc-card-stats {
+  display: flex; gap: 20px; align-items: center;
+}
+.svc-stat { text-align: right; }
+.svc-stat-val { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; color: var(--text); }
+.svc-stat-lbl { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.svc-chevron {
+  width: 20px; height: 20px; color: var(--text3);
+  transition: transform 0.25s; flex-shrink: 0;
+}
+.svc-card.open .svc-chevron { transform: rotate(90deg); }
+
+.svc-card-body { display: none; border-top: 1px solid var(--border); }
+.svc-card.open .svc-card-body { display: block; }
+
+/* Timeline strip inside card */
+.svc-timeline-strip {
+  padding: 16px 24px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0;
+  overflow: hidden; position: relative;
+}
+.svc-timeline-label { font-size: 10px; color: var(--text3); width: 80px; flex-shrink: 0; }
+.svc-timeline-bar-wrap { flex: 1; height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; display: flex; }
+.svc-timeline-seg { height: 100%; opacity: 0.8; }
+
+/* Bloques */
+.bloques-wrap { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+
+.bloque {
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+
+.bloque-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  background: var(--surface); cursor: pointer;
+}
+.bloque-header:hover { background: rgba(255,255,255,0.03); }
+.bloque-num {
+  width: 24px; height: 24px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+}
+.bloque-name { font-size: 13px; font-weight: 500; color: var(--text); flex: 1; }
+.bloque-count { font-size: 10px; color: var(--text3); }
+.bloque-chevron { width: 16px; height: 16px; color: var(--text3); transition: transform 0.2s; }
+.bloque.open .bloque-chevron { transform: rotate(90deg); }
+
+.bloque-body { display: none; border-top: 1px solid var(--border); }
+.bloque.open .bloque-body { display: block; }
+
+.tareas-list { padding: 4px 0; }
+
+.tarea-row {
+  display: flex; gap: 12px; padding: 14px 18px 14px 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.1s;
+}
+.tarea-row:last-child { border-bottom: none; }
+.tarea-row:hover { background: rgba(255,255,255,0.02); }
+.tarea-num { font-size: 10px; color: var(--text3); width: 16px; flex-shrink: 0; padding-top: 2px; }
+.tarea-content { flex: 1; }
+.tarea-text { font-size: 12px; color: var(--text); line-height: 1.4; }
+
+.entregables { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.entregable {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: 11px; color: var(--text3); line-height: 1.4;
+}
+.ent-arrow { flex-shrink: 0; padding-top: 2px; font-size: 9px; }
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ── ANIMATIONS ────────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+@keyframes barGrow {
+  from { width: 0; }
+}
+
+.svc-pill { animation: fadeUp 0.4s ease forwards; opacity: 0; }
+.svc-pill:nth-child(1) { animation-delay: 0.1s; }
+.svc-pill:nth-child(2) { animation-delay: 0.15s; }
+.svc-pill:nth-child(3) { animation-delay: 0.2s; }
+.svc-pill:nth-child(4) { animation-delay: 0.25s; }
+.svc-pill:nth-child(5) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════════ -->
+<div class="hero fade-up">
+  <div class="hero-top">
+    <div class="hero-brand">
+      <div class="hero-brand-dot"></div>
+      <span class="hero-brand-text">globaldit México</span>
+      <span class="hero-brand-sep">·</span>
+      <span class="hero-brand-text">FONATUR</span>
+    </div>
+    <div class="hero-meta">
+      CTS Compostela · Nayarit, México<br>
+      Plan de desarrollo turístico integral<br>
+      Junio 2026
+    </div>
+  </div>
+
+  <h1 class="hero-title">
+    Centro Turístico Sustentable<br>
+    <em>Compostela</em>
+  </h1>
+  <p class="hero-sub">Plan de desarrollo turístico integral · Cinco servicios integrados · 15 meses · Boca de Chila y Chacala-Las Cuevas</p>
+
+  <div class="svc-pills" id="hero-pills"></div>
+
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">15 <span>meses</span></div><div class="stat-lbl">Duración del proyecto</div></div>
+    <div class="stat"><div class="stat-val">5 <span>servicios</span></div><div class="stat-lbl">Integrados y en paralelo</div></div>
+    <div class="stat"><div class="stat-val">3 <span>fases</span></div><div class="stat-lbl">Arranque · Producción · Cierre</div></div>
+    <div class="stat"><div class="stat-val">30 <span>tareas</span></div><div class="stat-lbl">Con entregables documentados</div></div>
+    <div class="stat"><div class="stat-val">66 <span>entregables</span></div><div class="stat-lbl">Identificados y asignados</div></div>
+  </div>
+</div>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════════════════ -->
+<div class="nav">
+  <div class="nav-views">
+    <button class="nav-btn active" id="btn-gantt" onclick="switchView('gantt')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="3" rx="1"/><rect x="3" y="10.5" width="12" height="3" rx="1"/><rect x="3" y="17" width="16" height="3" rx="1"/></svg>
+      Vista Gantt
+    </button>
+    <button class="nav-btn" id="btn-services" onclick="switchView('services')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+      Vista Servicios
+    </button>
+  </div>
+  <div class="nav-right">CTS Compostela · Plan Integral · 2026–2027</div>
+</div>
+
+<!-- ══ GANTT VIEW ═════════════════════════════════════════════════════════════ -->
+<div class="view active" id="view-gantt">
+<div class="gantt-wrap">
+
+  <!-- Phase legend strip -->
+  <div style="display:flex;gap:8px;margin-bottom:20px;padding-left:220px">
+    <div style="flex:5;background:var(--phase1);border-radius:6px;padding:6px 12px;font-size:10px;font-weight:600;color:var(--s1);letter-spacing:0.06em;text-transform:uppercase">Fase 1 · Arranque y campo</div>
+    <div style="flex:5;background:var(--phase2);border-radius:6px;padding:6px 12px;font-size:10px;font-weight:600;color:var(--s2);letter-spacing:0.06em;text-transform:uppercase">Fase 2 · Producción principal</div>
+    <div style="flex:5;background:var(--phase3);border-radius:6px;padding:6px 12px;font-size:10px;font-weight:600;color:var(--s3);letter-spacing:0.06em;text-transform:uppercase">Fase 3 · Cierre y entrega</div>
+  </div>
+
+  <!-- Month headers -->
+  <div class="gantt-months" id="gantt-months"></div>
+
+  <!-- Gantt rows -->
+  <div class="gantt-body" id="gantt-body"></div>
+
+  <!-- Legend -->
+  <div class="gantt-legend">
+    <div class="legend-item"><div class="legend-milestone"></div>Hito de entrega</div>
+    <div id="gantt-svc-legend" style="display:flex;gap:16px;flex-wrap:wrap"></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ SERVICES VIEW ══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-services">
+<div class="services-wrap">
+
+  <div class="svc-filter" id="svc-filter"></div>
+  <div class="svc-cards" id="svc-cards"></div>
+
+</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════════════════════
+const SVCS = [
+  { id:'S1', label:'Estrategia turística CTS',    short:'Estrategia',      color:'var(--s1)', bg:'var(--s1bg)', border:'var(--s1b)',
+    months:[1,15], desc:'Marco institucional de política turística de FONATUR para los CTS',
+    tareas:7, entregables:14,
+    bloques:[
+      { nombre:'Definición de la estrategia turística', tareas:[
+        { texto:'Visión y principios rectores de la estrategia CTS', ents:['Documento de visión y principios rectores','Marco de decisión para el desarrollo de los CTS','Alineación con Plan Nacional de Desarrollo'] },
+        { texto:'Modelo de gobernanza turística: FONATUR como gestor de destino', ents:['Documento de modelo de gobernanza turística','Roles por fase del ciclo de vida del CTS','Arquitectura institucional y mecanismos de coordinación'] },
+        { texto:'Modelo de relación con el sector privado y comunidades', ents:['Política de FONATUR para la habilitación de la inversión privada','Mecanismos de integración comunitaria'] },
+        { texto:'Modelo de transformación CIP → CTS', ents:['Análisis, puntos críticos y hoja de ruta del modelo de transformación'] },
+      ]},
+      { nombre:'Despliegue operativo y hoja de ruta', tareas:[
+        { texto:'CTS Compostela como laboratorio del modelo', ents:['Documento de aplicación al CTS Compostela','Implicaciones sobre los cinco servicios','Marco de coherencia de la colaboración globaldit-FONATUR'] },
+        { texto:'Hoja de ruta para el sistema CTS y evolución de los CIP', ents:['Hoja de ruta para el sistema CTS de FONATUR','Priorización y secuencia de implementación'] },
+        { texto:'Sistema de seguimiento y actualización de la estrategia', ents:['Sistema de seguimiento con indicadores de implementación e impacto','Protocolo de actualización'] },
+      ]},
+    ],
+    hitos:[{ mes:4, label:'Marco estratégico' },{ mes:10, label:'Validación' },{ mes:15, label:'Entrega final' }]
+  },
+  { id:'S2', label:'Portfolio y posicionamiento', short:'Portfolio',        color:'var(--s2)', bg:'var(--s2bg)', border:'var(--s2b)',
+    months:[1,12], desc:'Diseño del portfolio de producto turístico y posicionamiento competitivo del CTS',
+    tareas:11, entregables:18,
+    bloques:[
+      { nombre:'Análisis y diagnóstico de posicionamiento', tareas:[
+        { texto:'Sesión de arranque y recopilación documental', ents:[] },
+        { texto:'Visita de campo al territorio (Boca de Chila y Chacala-Las Cuevas)', ents:[] },
+        { texto:'Análisis de posicionamiento competitivo — benchmarking nacional e internacional', ents:['Documento de análisis competitivo','Mapa de posicionamiento con benchmarking y conclusiones estratégicas'] },
+        { texto:'Caracterización de segmentos de demanda (4-6 perfiles prioritarios)', ents:['Perfiles de cliente, motivaciones, comportamiento y criterios de priorización'] },
+        { texto:'Definición del posicionamiento estratégico del CTS Compostela', ents:['Marco de posicionamiento','Argumentos temáticos y propuesta de valor'] },
+      ]},
+      { nombre:'Diseño del portfolio de producto turístico', tareas:[
+        { texto:'Arquitectura temática de la oferta', ents:['Documento de arquitectura temática','Mapa de familias de producto y estructura por PTS'] },
+        { texto:'Mapa de recursos y activos turísticos', ents:['Inventario sistematizado por tipología y potencial','Mapa de recursos del CTS Compostela'] },
+        { texto:'Diseño de experiencias y productos (12-16 productos)', ents:['Portfolio ejecutivo de productos','Fichas completas por PTS y familia temática'] },
+      ]},
+      { nombre:'Identidad de marca CTS (con FutureBrand)', tareas:[
+        { texto:'Briefing estratégico para FutureBrand', ents:['Posicionamiento, segmentos, propuesta de valor y territorio emocional'] },
+        { texto:'Proceso de naming del programa CTS', ents:['Propuesta de naming con justificación estratégica y análisis de disponibilidad'] },
+        { texto:'Desarrollo de identidad visual y narrativa de marca', ents:['Manual de identidad turística del programa CTS','Sistema visual completo: logotipo, paleta, tipografías, lenguaje gráfico'] },
+      ]},
+    ],
+    hitos:[{ mes:2, label:'Campo' },{ mes:6, label:'Posicionamiento' },{ mes:9, label:'Portfolio' },{ mes:12, label:'Marca' }]
+  },
+  { id:'S3', label:'Proyectos estratégicos',       short:'Proyectos',       color:'var(--s3)', bg:'var(--s3bg)', border:'var(--s3b)',
+    months:[1,11], desc:'Plan de desarrollo de proyectos turísticos estratégicos para los dos PTS',
+    tareas:9, entregables:13,
+    bloques:[
+      { nombre:'Diagnóstico de necesidades y oportunidades', tareas:[
+        { texto:'Análisis turístico del territorio — lectura integrada del Plan Maestro', ents:['Documento de análisis turístico y necesidades de desarrollo'] },
+        { texto:'Identificación y clasificación de oportunidades', ents:['Clasificación por tipología: infraestructura, equipamiento, servicios y activación comunitaria'] },
+      ]},
+      { nombre:'Diseño del portfolio de proyectos estratégicos', tareas:[
+        { texto:'Marco conceptual y criterios de priorización', ents:['Marco conceptual del portfolio','Formato de ficha validado con FONATUR'] },
+        { texto:'Fichas de proyectos estratégicos (15-20 proyectos)', ents:['Portfolio de proyectos turísticos del CTS Compostela','Fichas completas por PTS y tipología'] },
+        { texto:'Proyectos ancla — desarrollo ampliado (3-5 proyectos clave)', ents:['Perfiles ampliados con viabilidad, modelos de gestión y perfiles de operadores'] },
+      ]},
+      { nombre:'Priorización, hoja de ruta y difusión', tareas:[
+        { texto:'Priorización y hoja de ruta (corto, mediano y largo plazo)', ents:['Documento de priorización y hoja de ruta de desarrollo'] },
+        { texto:'Materiales de comunicación y deck de presentación', ents:['Deck institucional listo para interlocución de FONATUR'] },
+        { texto:'Sesiones de validación con FONATUR', ents:[] },
+      ]},
+    ],
+    hitos:[{ mes:3, label:'Diagnóstico' },{ mes:7, label:'Portfolio' },{ mes:11, label:'Entrega' }]
+  },
+  { id:'S4', label:'Modelo DTI e inteligencia',    short:'DTI',             color:'var(--s4)', bg:'var(--s4bg)', border:'var(--s4b)',
+    months:[1,13], desc:'Modelo de Destino Turístico Inteligente e inteligencia de datos del CTS',
+    tareas:12, entregables:18,
+    bloques:[
+      { nombre:'Diagnóstico y marco de referencia', tareas:[
+        { texto:'Diagnóstico de madurez DTI — 5 ejes SEGITTUR', ents:['Informe de diagnóstico con radar de madurez, fortalezas y brechas'] },
+        { texto:'Marco conceptual DTI adaptado al contexto mexicano', ents:['Marco conceptual en tres niveles: conceptual, institucional y operativo'] },
+        { texto:'Customer Journey del CTS como eje integrador', ents:['Mapa del Customer Journey por segmentos','Fases, puntos de contacto y conexión con los cinco ejes DTI'] },
+      ]},
+      { nombre:'Diseño del modelo DTI por ejes', tareas:[
+        { texto:'Eje de Gobernanza digital del destino', ents:['Mapa de actores y roles, flujos de información y mecanismos de decisión'] },
+        { texto:'Eje de Innovación y competitividad empresarial', ents:['Sistema de detección de tendencias e indicadores de competitividad'] },
+        { texto:'Eje de Tecnología e inteligencia de datos', ents:['Arquitectura tecnológica por capas','Cuadros de mando por perfil y catálogo de métricas'] },
+        { texto:'Eje de Sostenibilidad turística inteligente', ents:['Sistema de indicadores e integración con monitoreo territorial de FONATUR'] },
+        { texto:'Eje de Accesibilidad universal e inclusión', ents:['Estándares por tipología de producto y criterios de inclusión socioeconómica'] },
+      ]},
+      { nombre:'Implantación, escalabilidad y transferencia', tareas:[
+        { texto:'Hoja de ruta de implantación — 3 fases', ents:['Arranque, activación y madurez con hitos, responsables y criterios de verificación'] },
+        { texto:'Modelo de escalabilidad DTI para el sistema CTS de FONATUR', ents:['Modelo de transferencia para replicación en otros CTS'] },
+        { texto:'Documento maestro DTI + síntesis ejecutiva de 10 páginas', ents:['Documento maestro completo','Síntesis ejecutiva para presentaciones institucionales de alto nivel'] },
+      ]},
+    ],
+    hitos:[{ mes:3, label:'Diagnóstico' },{ mes:8, label:'Modelo DTI' },{ mes:13, label:'Entrega' }]
+  },
+  { id:'S5', label:'Oficina Técnica Turística',    short:'OTT',             color:'var(--s5)', bg:'var(--s5bg)', border:'var(--s5b)',
+    months:[1,15], desc:'Diseño y puesta en marcha de la Oficina Técnica Turística (OTT) de FONATUR para el CTS',
+    tareas:9, entregables:16,
+    bloques:[
+      { nombre:'Diagnóstico institucional y modelo funcional', tareas:[
+        { texto:'Análisis institucional de FONATUR — estructura, competencias y ecosistema', ents:['Informe de análisis institucional','Mapa de la estructura interna, marco normativo y ecosistema de actores'] },
+        { texto:'Definición del modelo funcional OTT — 5 planos', ents:['Documento de modelo funcional','Cinco dominios: producto/experiencia, mercado/inteligencia, marca, relaciones institucionales, coordinación territorial'] },
+      ]},
+      { nombre:'Diseño organizativo y operativo', tareas:[
+        { texto:'Estructura organizativa y perfiles de competencias — 3 fases evolutivas', ents:['Organigrama en tres momentos: arranque, activación, consolidación','Descripción de funciones y perfiles de reclutamiento'] },
+        { texto:'Manual de procesos y procedimientos operativos', ents:['Manual con procesos prioritarios, responsables y criterios de calidad'] },
+        { texto:'Sistema de coordinación y reporte — 3 niveles', ents:['Agenda de coordinación, plantillas de informe y protocolo con actores externos'] },
+      ]},
+      { nombre:'Herramientas estratégicas y puesta en marcha', tareas:[
+        { texto:'Plan estratégico OTT para los primeros 2 años + hoja de ruta 90 días', ents:['Objetivos, acciones priorizadas, indicadores de progreso','Hoja de ruta de los primeros 90 días'] },
+        { texto:'Programa de promoción turística — avance inicial (3 públicos)', ents:['Marco estratégico por público: operadores/inversores, visitantes, medios','Canales prioritarios y mensajes por fase'] },
+        { texto:'Modelo replicable de OTT para el sistema CTS de FONATUR', ents:['Elementos invariantes y adaptables','Guía de adaptación por tipología de CTS','Propuesta de red de coordinación entre OTTs'] },
+      ]},
+    ],
+    hitos:[{ mes:2, label:'Modelo funcional' },{ mes:6, label:'Organización' },{ mes:12, label:'Plan estratégico' },{ mes:15, label:'Cierre' }]
+  },
+];
+
+const MONTHS = 15;
+const COL_W = 100 / MONTHS; // % por mes
+
+// ═══════════════════════════════════════════════════════════════════════════
+// HERO PILLS
+// ═══════════════════════════════════════════════════════════════════════════
+function buildHeroPills() {
+  const wrap = document.getElementById('hero-pills');
+  SVCS.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'svc-pill';
+    el.style.cssText = `color:${s.color};border-color:${s.border};background:${s.bg}`;
+    el.innerHTML = `<div class="pill-dot" style="background:${s.color}"></div>${s.id} · ${s.short}`;
+    el.onclick = () => { switchView('services'); setTimeout(()=>scrollToCard(s.id),100); };
+    wrap.appendChild(el);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// GANTT
+// ═══════════════════════════════════════════════════════════════════════════
+function buildGantt() {
+  // Month labels
+  const monthsEl = document.getElementById('gantt-months');
+  for (let m=1; m<=MONTHS; m++) {
+    const el = document.createElement('div');
+    el.className = 'month-label';
+    el.textContent = `M${m}`;
+    monthsEl.appendChild(el);
+  }
+
+  // Rows
+  const body = document.getElementById('gantt-body');
+
+  // Section: Coordinación transversal
+  const sectionEl = document.createElement('div');
+  sectionEl.className = 'gantt-section-title';
+  sectionEl.textContent = 'Coordinación y dirección';
+  body.appendChild(sectionEl);
+
+  // TR row
+  appendGanttRow(body, {
+    code:'DIR', name:'Dirección y coordinación', color:'var(--tr)', bg:'var(--trbg)',
+    start:1, end:15, label:'Dirección · Reuniones · Viajes', milestones:[]
+  });
+
+  const sectionEl2 = document.createElement('div');
+  sectionEl2.className = 'gantt-section-title';
+  sectionEl2.textContent = 'Servicios del proyecto';
+  body.appendChild(sectionEl2);
+
+  SVCS.forEach(s => {
+    appendGanttRow(body, {
+      code: s.id,
+      name: s.label,
+      color: s.color,
+      bg: s.bg,
+      start: s.months[0],
+      end: s.months[1],
+      label: s.short,
+      milestones: s.hitos
+    });
+  });
+
+  // Legend
+  const legEl = document.getElementById('gantt-svc-legend');
+  SVCS.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<div class="legend-bar" style="background:${s.color};opacity:0.7"></div>${s.id} · ${s.short}`;
+    legEl.appendChild(item);
+  });
+}
+
+function appendGanttRow(parent, { code, name, color, bg, start, end, label, milestones }) {
+  const row = document.createElement('div');
+  row.className = 'gantt-row';
+
+  // Label
+  const lbl = document.createElement('div');
+  lbl.className = 'gantt-label';
+  lbl.innerHTML = `
+    <div class="gantt-label-code" style="background:${bg};color:${color}">${code}</div>
+    <div class="gantt-label-name">${name}</div>
+  `;
+
+  // Timeline
+  const tl = document.createElement('div');
+  tl.className = 'gantt-timeline';
+
+  // Phase backgrounds
+  const phaseData = [[1,5,'var(--phase1)'],[6,10,'var(--phase2)'],[11,15,'var(--phase3)']];
+  phaseData.forEach(([ps, pe, pc]) => {
+    const ph = document.createElement('div');
+    ph.className = 'phase-bg';
+    ph.style.cssText = `left:${(ps-1)*COL_W}%;width:${(pe-ps+1)*COL_W}%;background:${pc};`;
+    tl.appendChild(ph);
+  });
+
+  // Month cols
+  for (let m=1; m<=MONTHS; m++) {
+    const col = document.createElement('div');
+    col.className = 'gantt-col';
+    tl.appendChild(col);
+  }
+
+  // Bar
+  const barWrap = document.createElement('div');
+  barWrap.className = 'gantt-bar-wrap';
+  const bar = document.createElement('div');
+  bar.className = 'gantt-bar';
+  const left = (start - 1) * COL_W;
+  const width = (end - start + 1) * COL_W;
+  bar.style.cssText = `left:${left}%;width:${width}%;background:${color};opacity:0.85;`;
+  bar.textContent = label;
+  // Animate
+  bar.style.animation = 'barGrow 0.8s ease forwards';
+  barWrap.appendChild(bar);
+
+  // Milestones
+  milestones.forEach(({ mes, label: mLabel }) => {
+    const ms = document.createElement('div');
+    ms.className = 'gantt-milestone';
+    ms.style.left = `${(mes - 0.5) * COL_W}%`;
+    ms.title = `${mLabel} (M${mes})`;
+    ms.style.cursor = 'pointer';
+    barWrap.appendChild(ms);
+
+    // Tooltip label
+    const tt = document.createElement('div');
+    tt.style.cssText = `position:absolute;left:${(mes-0.5)*COL_W}%;transform:translateX(-50%);bottom:4px;
+      font-size:8px;color:var(--gold);white-space:nowrap;letter-spacing:0.04em;font-weight:600;pointer-events:none;`;
+    tt.textContent = mLabel;
+    barWrap.appendChild(tt);
+  });
+
+  tl.appendChild(barWrap);
+  row.appendChild(lbl);
+  row.appendChild(tl);
+  parent.appendChild(row);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SERVICES VIEW
+// ═══════════════════════════════════════════════════════════════════════════
+function buildServicesView() {
+  // Filter buttons
+  const filterEl = document.getElementById('svc-filter');
+  const allBtn = document.createElement('button');
+  allBtn.className = 'svc-filter-btn active';
+  allBtn.textContent = 'Todos los servicios';
+  allBtn.onclick = () => filterServices('all');
+  filterEl.appendChild(allBtn);
+
+  SVCS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'svc-filter-btn';
+    btn.style.cssText = ``;
+    btn.textContent = `${s.id} · ${s.short}`;
+    btn.setAttribute('data-svc', s.id);
+    btn.onclick = () => filterServices(s.id);
+    filterEl.appendChild(btn);
+  });
+
+  // Cards
+  const cardsEl = document.getElementById('svc-cards');
+  SVCS.forEach(s => {
+    cardsEl.appendChild(buildSvcCard(s));
+  });
+}
+
+function buildSvcCard(s) {
+  const card = document.createElement('div');
+  card.className = 'svc-card';
+  card.id = `card-${s.id}`;
+  card.setAttribute('data-svc', s.id);
+
+  // Timeline strip (mini Gantt)
+  const totalTareas = s.bloques.reduce((sum, b) => sum + b.tareas.length, 0);
+  const totalEnts   = s.bloques.reduce((sum, b) => sum + b.tareas.reduce((ts, t) => ts + t.ents.length, 0), 0);
+
+  card.innerHTML = `
+    <div class="svc-card-header" onclick="toggleCard('${s.id}')">
+      <div class="svc-card-code" style="background:${s.bg};color:${s.color};border:1px solid ${s.border}">${s.id}</div>
+      <div class="svc-card-info">
+        <div class="svc-card-title">${s.label}</div>
+        <div class="svc-card-sub">${s.desc}</div>
+      </div>
+      <div class="svc-card-stats">
+        <div class="svc-stat">
+          <div class="svc-stat-val" style="color:${s.color}">${s.months[0]}→M${s.months[1]}</div>
+          <div class="svc-stat-lbl">Meses</div>
+        </div>
+        <div class="svc-stat">
+          <div class="svc-stat-val">${totalTareas}</div>
+          <div class="svc-stat-lbl">Tareas</div>
+        </div>
+        <div class="svc-stat">
+          <div class="svc-stat-val">${totalEnts}</div>
+          <div class="svc-stat-lbl">Entregables</div>
+        </div>
+      </div>
+      <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </div>
+    <div class="svc-card-body">
+      <div class="svc-timeline-strip">
+        <div class="svc-timeline-label">M1 → M${MONTHS}</div>
+        <div class="svc-timeline-bar-wrap">
+          ${buildMiniGantt(s)}
+        </div>
+        <div style="width:60px;text-align:right">
+          ${s.hitos.map(h=>`<span style="font-size:9px;color:var(--gold);display:block">◆ M${h.mes} ${h.label}</span>`).join('')}
+        </div>
+      </div>
+      <div class="bloques-wrap">
+        ${s.bloques.map((b, bi) => buildBloque(b, bi, s)).join('')}
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function buildMiniGantt(s) {
+  const segments = [];
+  // Empty before
+  if (s.months[0] > 1) {
+    segments.push(`<div class="svc-timeline-seg" style="flex:${s.months[0]-1};background:transparent"></div>`);
+  }
+  // Active
+  segments.push(`<div class="svc-timeline-seg" style="flex:${s.months[1]-s.months[0]+1};background:${s.color};border-radius:3px"></div>`);
+  // Empty after
+  if (s.months[1] < MONTHS) {
+    segments.push(`<div class="svc-timeline-seg" style="flex:${MONTHS-s.months[1]};background:transparent"></div>`);
+  }
+  return segments.join('');
+}
+
+function buildBloque(b, bi, s) {
+  const id = `bloque-${s.id}-${bi}`;
+  const tareaRows = b.tareas.map((t, ti) => `
+    <div class="tarea-row">
+      <div class="tarea-num">${ti+1}</div>
+      <div class="tarea-content">
+        <div class="tarea-text">${t.texto}</div>
+        ${t.ents.length > 0 ? `
+          <div class="entregables">
+            ${t.ents.map(e => `
+              <div class="entregable">
+                <span class="ent-arrow" style="color:${s.color}">↳</span>
+                <span>${e}</span>
+              </div>`).join('')}
+          </div>` : ''}
+      </div>
+    </div>`).join('');
+
+  return `
+    <div class="bloque" id="${id}">
+      <div class="bloque-header" onclick="toggleBloque('${id}')">
+        <div class="bloque-num" style="background:${s.bg};color:${s.color}">${bi+1}</div>
+        <div class="bloque-name">${b.nombre}</div>
+        <div class="bloque-count">${b.tareas.length} tareas</div>
+        <svg class="bloque-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </div>
+      <div class="bloque-body">
+        <div class="tareas-list">${tareaRows}</div>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INTERACTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+function switchView(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`view-${view === 'gantt' ? 'gantt' : 'services'}`).classList.add('active');
+  document.getElementById(`btn-${view === 'gantt' ? 'gantt' : 'services'}`).classList.add('active');
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(`card-${id}`);
+  card.classList.toggle('open');
+}
+
+function toggleBloque(id) {
+  const bloque = document.getElementById(id);
+  bloque.classList.toggle('open');
+}
+
+function filterServices(svcId) {
+  // Update filter buttons
+  document.querySelectorAll('.svc-filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (svcId === 'all' && btn.textContent === 'Todos los servicios') btn.classList.add('active');
+    if (btn.getAttribute('data-svc') === svcId) btn.classList.add('active');
+  });
+
+  // Show/hide cards
+  document.querySelectorAll('.svc-card').forEach(card => {
+    if (svcId === 'all' || card.getAttribute('data-svc') === svcId) {
+      card.style.display = '';
+      if (svcId !== 'all') {
+        card.classList.add('open');
+        // Open first bloque
+        const firstBloque = card.querySelector('.bloque');
+        if (firstBloque) firstBloque.classList.add('open');
+      }
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function scrollToCard(id) {
+  filterServices(id);
+  const card = document.getElementById(`card-${id}`);
+  if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════════════
+buildHeroPills();
+buildGantt();
+buildServicesView();
+</script>
+</body>
+</html>
