@@ -158,11 +158,11 @@ const MESES=["Jul'26","Ago'26","Sep'26","Oct'26","Nov'26","Dic'26","Ene'27","Feb
 const CM={
   DIR:{l:'Dirección y coordinación',c:'var(--tr)',m:'var(--trm)'},
   VJ: {l:'Viajes y presencialidad',c:'var(--vj)',m:'var(--vjm)'},
-  S1: {l:'S1 · Estrategia turística CTS',     c:'var(--s1)',m:'var(--s1m)'},
-  S2: {l:'S2 · Portfolio y posicionamiento',  c:'var(--s2)',m:'var(--s2m)'},
-  S3: {l:'S3 · Proyectos estratégicos',       c:'var(--s3)',m:'var(--s3m)'},
-  S4: {l:'S4 · Modelo DTI e inteligencia',    c:'var(--s4)',m:'var(--s4m)'},
-  S5: {l:'S5 · Oficina Técnica Turística',    c:'var(--s5)',m:'var(--s5m)'},
+  S1: {l:'S1 · Estrategia turística del CTS',                          c:'var(--s1)',m:'var(--s1m)'},
+  S2: {l:'S2 · Portfolio de producto y posicionamiento turístico',      c:'var(--s2)',m:'var(--s2m)'},
+  S3: {l:'S3 · Plan de desarrollo de proyectos turísticos estratégicos',c:'var(--s3)',m:'var(--s3m)'},
+  S4: {l:'S4 · Modelo DTI y Sistema de Inteligencia Turística',        c:'var(--s4)',m:'var(--s4m)'},
+  S5: {l:'S5 · Diseño y puesta en marcha de la OTT',                   c:'var(--s5)',m:'var(--s5m)'},
 };
 
 // Entregables: op = operativo cliente, in = instrumental interno
@@ -185,36 +185,72 @@ const VIAJES=[
 // Tareas con entregables diferenciados: op=operativo cliente, in=instrumental
 const T={
   S1:[
-    {id:"S1-1",n:"Visión, gobernanza y modelos estratégicos",ms:1,me:7,
+    {id:"S1-1",n:"Visión y principios rectores de la estrategia",ms:1,me:4,
       op:["Plan Director de Estrategia Turística del CTS Compostela"],
-      in:["Documento de visión y principios rectores","Documento de modelo de gobernanza turística","Documento de modelo de relación sector privado/comunidades","Documento del Modelo de transformación CIP→CTS"]},
-    {id:"S1-2",n:"Hoja de ruta para el sistema CTS de FONATUR",ms:5,me:12,
+      in:["Documento de visión y principios rectores"]},
+    {id:"S1-2",n:"Modelo de gobernanza y relación con el sector privado",ms:2,me:6,
+      op:[],
+      in:["Modelo de gobernanza turística","Modelo de relación con sector privado y comunidades"]},
+    {id:"S1-3",n:"Modelo de transformación CIP → CTS",ms:4,me:7,
+      op:["Plan Director de Estrategia Turística del CTS Compostela"],
+      in:["Documento del modelo de transformación CIP→CTS"]},
+    {id:"S1-4",n:"Aplicación de la estrategia al CTS Compostela",ms:5,me:9,
+      op:[],
+      in:["Documento de aplicación al CTS Compostela"]},
+    {id:"S1-5",n:"Hoja de ruta para el sistema CTS",ms:8,me:12,
       op:["Hoja de ruta para el sistema CTS de FONATUR"],
-      in:["Documento de aplicación de la estrategia al CTS Compostela"]},
-    {id:"S1-3",n:"Sistema de seguimiento y actualización",ms:11,me:15,
+      in:[]},
+    {id:"S1-6",n:"Sistema de seguimiento y actualización",ms:11,me:15,
       op:["Sistema de seguimiento y actualización de la estrategia"],
       in:[]},
   ],
   S2:[
-    {id:"S2-1",n:"Análisis, campo y diagnóstico de posicionamiento",ms:1,me:5,
+    {id:"S2-1",n:"Sesión de arranque y visita de campo al territorio",ms:1,me:2,
+      op:[],
+      in:["Sesión de arranque completada","Visita de campo Boca de Chila + Chacala"]},
+    {id:"S2-2",n:"Análisis de posicionamiento competitivo",ms:2,me:4,
+      op:[],
+      in:["Documento de análisis competitivo","Caracterización de segmentos de demanda"]},
+    {id:"S2-3",n:"Marco de posicionamiento estratégico",ms:4,me:6,
       op:["Marco de posicionamiento estratégico del CTS Compostela"],
-      in:["Documento de análisis de posicionamiento competitivo","Documento de caracterización de segmentos de demanda","Sesión de arranque y visita de campo completadas"]},
-    {id:"S2-2",n:"Diseño del portfolio de producto turístico",ms:5,me:9,
+      in:[]},
+    {id:"S2-4",n:"Arquitectura temática y mapa de recursos",ms:5,me:7,
+      op:[],
+      in:["Documento de arquitectura temática","Inventario sistematizado de recursos y activos"]},
+    {id:"S2-5",n:"Diseño de experiencias y productos turísticos",ms:6,me:9,
       op:["Portfolio ejecutivo de productos turísticos"],
-      in:["Documento de arquitectura temática","Inventario sistematizado de recursos y activos turísticos"]},
-    {id:"S2-3",n:"Identidad de marca CTS (con FutureBrand)",ms:7,me:12,
-      op:["Propuesta de naming del programa CTS","Manual de identidad turística del programa CTS (FutureBrand)"],
-      in:["Briefing estratégico para FutureBrand"]},
+      in:[]},
+    {id:"S2-6",n:"Modelo de distribución y comercialización",ms:7,me:10,
+      op:[],
+      in:["Canales y estrategia de distribución"]},
+    {id:"S2-7",n:"Briefing estratégico para FutureBrand",ms:7,me:8,
+      op:[],
+      in:["Briefing de posicionamiento, segmentos y territorio emocional"]},
+    {id:"S2-8",n:"Proceso de naming del programa CTS",ms:8,me:10,
+      op:["Propuesta de naming del programa CTS"],
+      in:[]},
+    {id:"S2-9",n:"Identidad visual y narrativa de marca CTS",ms:9,me:12,
+      op:["Manual de identidad turística del programa CTS (FutureBrand)"],
+      in:[]},
   ],
   S3:[
-    {id:"S3-1",n:"Diagnóstico territorial y oportunidades",ms:1,me:5,
+    {id:"S3-1",n:"Análisis turístico del territorio CTS",ms:1,me:3,
       op:[],
-      in:["Documento de análisis turístico del territorio","Documento de identificación y clasificación de oportunidades","Marco conceptual y criterios del portfolio"]},
-    {id:"S3-2",n:"Portfolio de proyectos estratégicos (15-20)",ms:4,me:9,
+      in:["Documento de análisis turístico del territorio"]},
+    {id:"S3-2",n:"Identificación y clasificación de oportunidades",ms:2,me:5,
+      op:[],
+      in:["Documento de identificación y clasificación de oportunidades","Marco conceptual y criterios del portfolio"]},
+    {id:"S3-3",n:"Fichas de proyectos turísticos estratégicos (15-20)",ms:4,me:8,
       op:["Portfolio de proyectos turísticos estratégicos del CTS Compostela"],
       in:[]},
-    {id:"S3-3",n:"Priorización, hoja de ruta y deck FONATUR",ms:8,me:11,
-      op:["Documento de priorización y hoja de ruta de desarrollo (CP/MP/LP)","Deck de presentación institucional para FONATUR"],
+    {id:"S3-4",n:"Proyectos ancla — desarrollo ampliado (3-5)",ms:6,me:9,
+      op:[],
+      in:["Perfiles ampliados con viabilidad, modelos de gestión y operadores"]},
+    {id:"S3-5",n:"Priorización y hoja de ruta CP/MP/LP",ms:8,me:10,
+      op:["Documento de priorización y hoja de ruta de desarrollo (CP/MP/LP)"],
+      in:[]},
+    {id:"S3-6",n:"Deck de presentación institucional para FONATUR",ms:9,me:11,
+      op:["Deck de presentación institucional para FONATUR"],
       in:[]},
   ],
   S4:[
@@ -246,6 +282,34 @@ const T={
     {id:"S5-3",n:"Modelo replicable OTT sistema CTS-FONATUR",ms:12,me:15,
       op:["Modelo replicable de OTT para el sistema CTS de FONATUR"],
       in:[]},
+  ],
+};
+
+
+const BLOQUES={
+  S1:[
+    {n:"Definición de la estrategia turística para los CTS",     ids:["S1-1","S1-2","S1-3"]},
+    {n:"Despliegue operativo de la hoja de ruta del CTS Compostela", ids:["S1-4","S1-5","S1-6"]},
+  ],
+  S2:[
+    {n:"Análisis y diagnóstico del posicionamiento estratégico", ids:["S2-1","S2-2","S2-3"]},
+    {n:"Diseño del portfolio de producto turístico",              ids:["S2-4","S2-5","S2-6"]},
+    {n:"Concepto e identidad de marca del programa CTS",          ids:["S2-7","S2-8","S2-9"]},
+  ],
+  S3:[
+    {n:"Diagnóstico de necesidades e identificación de oportunidades", ids:["S3-1","S3-2"]},
+    {n:"Diseño del portfolio de proyectos estratégicos",               ids:["S3-3","S3-4"]},
+    {n:"Priorización, hoja de ruta y difusión del plan",               ids:["S3-5","S3-6"]},
+  ],
+  S4:[
+    {n:"Diagnóstico y marco de referencia",           ids:["S4-1"]},
+    {n:"Diseño del modelo DTI por ejes",              ids:["S4-2"]},
+    {n:"Implantación, escalabilidad y transferencia", ids:["S4-3","S4-4","S4-5"]},
+  ],
+  S5:[
+    {n:"Definición del modelo",                       ids:["S5-1"]},
+    {n:"Diseño organizativo y operativo",             ids:["S5-2"]},
+    {n:"Herramientas estratégicas y puesta en marcha",ids:["S5-3"]},
   ],
 };
 
@@ -371,7 +435,7 @@ function buildGantt(){
   });
 
   // SERVICIOS
-  addSecLbl(secs,'Servicios — calendarización detallada · click en tarea para ver entregables');
+  addSecLbl(secs,'Servicios — calendarización por bloques · click en tarea para ver detalle');
   SVCS.forEach(svc=>{
     const meta=CM[svc];const ts=T[svc];
     const msMin=Math.min(...ts.map(t=>t.ms));const meMax=Math.max(...ts.map(t=>t.me));
@@ -397,8 +461,24 @@ function buildGantt(){
     });
     htl.appendChild(hl);hrow.appendChild(htl);hw.appendChild(hrow);secs.appendChild(hw);
 
-    // Task rows
+    // Bloque sub-headers + task rows
+    const blqs=BLOQUES[svc]||[];
+    let blqIdx=-1;
     ts.forEach(t=>{
+      // Check if this task starts a new bloque
+      const newBlqIdx=blqs.findIndex(b=>b.ids[0]===t.id);
+      if(newBlqIdx>=0 && newBlqIdx!==blqIdx){
+        blqIdx=newBlqIdx;
+        const bw=mkRowWrap();
+        const brow=document.createElement('div');brow.className='grow';
+        brow.style.cssText='min-height:24px;cursor:default;border-color:transparent;background:transparent;margin-bottom:1px;';
+        const blbl=document.createElement('div');blbl.className='glbl';
+        blbl.style.cssText='background:transparent;border-right:none;';
+        blbl.innerHTML=`<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:${meta.c};opacity:.7;padding-left:8px">${blqs[blqIdx].n}</div>`;
+        const btl=document.createElement('div');btl.className='gtl';btl.style.background='transparent';
+        for(let i=1;i<=N;i++){const c=document.createElement('div');c.className='gtlc '+phc(i);btl.appendChild(c);}
+        brow.appendChild(blbl);brow.appendChild(btl);bw.appendChild(brow);secs.appendChild(bw);
+      }
       const w=mkRowWrap();
       const row=document.createElement('div');row.className='grow';
       row.appendChild(mkLbl(t.id,t.n,meta.c,meta.m,true));
@@ -437,7 +517,7 @@ function buildGantt(){
         </div>`:''}
       </div>`;
       w.appendChild(det);secs.appendChild(w);
-    });
+    }); // end ts.forEach
   });
 
   root.appendChild(secs);
